@@ -5,7 +5,7 @@ This is is a full-stack auction application leveraged microservices architecture
 ## Features
 - Backend Services: Crafted using C# and .Net framework for a robust foundation.
 - Service-to-Service Communication: Asynchronous via RabbitMQ, synchronous using gRPC.
-- Identity and Security: Strengthened by OAuth and OpenIDConnect protocols.
+- Identity server: Implement a identity server leveraging Duende, strengthen by OAuth and OpenIDConnect protocols.
 - Gateway with Microsoft YARP: Responsive gateway for streamlined request handling.
 - Next.js Client App: Mobile-responsive web application powered by React.js and Next.js.
 - Real-Time Notifications: Integrated with SignalR for dynamic push notifications.
