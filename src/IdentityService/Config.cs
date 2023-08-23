@@ -1,0 +1,33 @@
+﻿using Duende.IdentityServer.Models;
+
+namespace IdentityService;
+
+public static class Config
+{
+    public static IEnumerable<IdentityResource> IdentityResources =>
+        new IdentityResource[]
+        {
+            new IdentityResources.OpenId(),
+            new IdentityResources.Profile()
+        };
+
+    public static IEnumerable<ApiScope> ApiScopes =>
+        new ApiScope[]
+        {
+            new("auctionApp", "Auction App Full Access")
+        };
+
+    public static IEnumerable<Client> Clients =>
+        new Client[]
+        {
+            new()
+            {
+                ClientId = "postman",
+                ClientName = "postman",
+                AllowedScopes = { "openid", "profile", "auctionApp" },
+                RedirectUris = { "https://www.getpostman/oath2/callback" },
+                ClientSecrets = new[] { new Secret("NotASecret".Sha256()) },
+                AllowedGrantTypes = { GrantType.ResourceOwnerPassword }
+            }
+        };
+}
