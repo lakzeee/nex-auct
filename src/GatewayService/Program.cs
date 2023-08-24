@@ -10,6 +10,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         o.Authority = builder.Configuration["IdentityServiceUrl"];
         o.RequireHttpsMetadata = false;
+        o.TokenValidationParameters.ValidateIssuer = false;
         o.TokenValidationParameters.ValidateAudience = false;
         o.TokenValidationParameters.NameClaimType = "username";
     });
