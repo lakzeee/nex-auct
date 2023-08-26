@@ -2,7 +2,10 @@
 
 import { AiOutlineSearch, AiOutlineUser } from "react-icons/ai";
 import { useParamsStore } from "@/app/Components/hooks/useParamsStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import NavLogin from "@/app/Components/layout/NavLogin";
+import { getCurrentUser } from "@/app/Actions/authActions";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function NavBar() {
   const setParams = useParamsStore((state) => state.setParams);
@@ -10,6 +13,23 @@ export default function NavBar() {
   const setSearchValue = useParamsStore((state) => state.setSearchValue);
   const searchValue = useParamsStore((state) => state.searchValue);
   const [value, setValue] = useState("");
+  const [user, setUser] = useState(null); // State to hold user data
+  const [avatarChar, setAvatarChar] = useState(null);
+
+  const router = useRouter();
+  const curPath = usePathname();
+
+  useEffect(() => {
+    async function fetchUserData() {
+      const userData: any = await getCurrentUser();
+      if (userData) {
+        setUser(userData);
+        setAvatarChar(userData.name.slice(0, 2));
+      }
+    }
+
+    fetchUserData();
+  }, []);
 
   function onChange(event: any) {
     setSearchValue(event.target.value);
@@ -19,10 +39,15 @@ export default function NavBar() {
     setParams({ searchTerm: searchValue });
   }
 
+  function doRest() {
+    if (curPath !== "/") router.push("/");
+    reset();
+  }
+
   return (
     <>
       <div className="navbar bg-base-100 drop-shadow-md">
-        <div onClick={reset} className="flex-1">
+        <div onClick={doRest} className="flex-1">
           <a className="btn btn-ghost normal-case text-xl">NexAuct</a>
         </div>
         <div className="flex-none">
@@ -40,28 +65,29 @@ export default function NavBar() {
             />
             <button onClick={search}>
               <AiOutlineSearch
-                className="absolute bg-primary text-white rounded-full p-2 mx-2 right-0 -translate-y-1/2"
+                className="absolute bg-primary text-accent-content rounded-full p-2 mx-2 right-0 -translate-y-1/2"
                 size={34}
               />
             </button>
           </div>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-8 rounded-full">
-                <AiOutlineUser size={32} />
-              </div>
-            </label>
-            <ul
+          <div className="dropdown dropdown-left">
+            <div
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className="btn btn-ghost btn-circle avatar placeholder"
             >
-              <li>
-                <a>LogIn</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
+              <div
+                className={`${
+                  avatarChar ? "bg-accent" : "bg-neutral-content"
+                } rounded-full w-9`}
+              >
+                {avatarChar ? (
+                  <span className="text-accent-content">{avatarChar}</span>
+                ) : (
+                  <AiOutlineUser className="text-accent-content" size={24} />
+                )}
+              </div>
+            </div>
+            <NavLogin user={user} />
           </div>
         </div>
       </div>

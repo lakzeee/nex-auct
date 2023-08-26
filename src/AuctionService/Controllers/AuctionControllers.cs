@@ -50,13 +50,9 @@ public class AuctionControllers : ControllerBase
     [HttpPost]
     public async Task<ActionResult<AuctionDto>> CreateAuction(CreateAuctionDto auctionDto)
     {
-        Console.WriteLine("===>>> creating auction object");
         var auction = _mapper.Map<Auction>(auctionDto);
-
-        Console.WriteLine("===>>> authorizing create auction ===>>>");
+        
         auction.Seller = User.Identity.Name;
-        Console.WriteLine("auction.Seller", auction.Seller);
-        Console.WriteLine("User.Identity.Name", User.Identity.Name);
         
         _context.Auctions.Add(auction);
 
@@ -81,7 +77,6 @@ public class AuctionControllers : ControllerBase
         var auction = await _context.Auctions
             .Include(x => x.Item)
             .FirstOrDefaultAsync(x => x.Id == id);
-        if (auction == null) return NotFound();
 
         if (auction.Seller != User.Identity.Name) return Forbid();
         
@@ -103,8 +98,6 @@ public class AuctionControllers : ControllerBase
     public async Task<ActionResult> DeleteAuction(Guid id)
     {
         var auction = await _context.Auctions.FindAsync(id);
-        
-        if (auction == null) return NotFound();
 
         if (auction.Seller != User.Identity.Name) return Forbid();
         

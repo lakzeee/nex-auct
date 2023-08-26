@@ -21,7 +21,6 @@ export default function Listings() {
   }));
   const setParams = useParamsStore((state) => state.setParams);
   const url = qs.stringifyUrl({ url: "", query: params });
-  console.log(url);
 
   function setPageNumber(pageNumber: number) {
     setParams({ pageNumber });
