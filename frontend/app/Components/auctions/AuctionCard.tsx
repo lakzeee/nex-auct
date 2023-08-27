@@ -1,6 +1,7 @@
 import CountdownTimer from "@/app/Components/auctions/CountdownTimer";
 import AuctionCardImage from "@/app/Components/auctions/AuctionCardImage";
 import { Auction } from "@/types";
+import Link from "next/link";
 
 type Props = {
   auction: Auction;
@@ -8,8 +9,8 @@ type Props = {
 
 export default function AuctionCard({ auction }: Props) {
   return (
-    <a href="#" className="group">
-      <div className="card card-compact md:card-normal h-full bg-base-100 shadow-xl">
+    <Link href={`/auctions/details/${auction.id}`} className="group">
+      <div className="card card-compact md:card-normal h-full bg-base-100 hover:bg-neutral-focus shadow-xl duration-700 ease-in-out">
         <figure>
           <div className="relative w-full">
             <AuctionCardImage imageUrl={auction.imageUrl} />
@@ -30,6 +31,6 @@ export default function AuctionCard({ auction }: Props) {
           {/*</div>*/}
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import NavLogin from "@/app/Components/layout/NavLogin";
 import { getCurrentUser } from "@/app/Actions/authActions";
 import { usePathname, useRouter } from "next/navigation";
+import { RiAuctionLine } from "react-icons/ri";
 
 export default function NavBar() {
   const setParams = useParamsStore((state) => state.setParams);
@@ -36,6 +37,7 @@ export default function NavBar() {
   }
 
   function search() {
+    if (curPath !== "/") router.push("/");
     setParams({ searchTerm: searchValue });
   }
 
@@ -46,13 +48,16 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="navbar bg-base-100 drop-shadow-md">
-        <div onClick={doRest} className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">NexAuct</a>
+      <div className="navbar bg-base-100 drop-shadow-md flex justify-between gap-2">
+        <div onClick={doRest}>
+          <button className="btn btn-ghost normal-case text-lg sm:text-xl gap-2">
+            <RiAuctionLine size={34} />
+            NexAuct
+          </button>
         </div>
-        <div className="flex-none">
+        <div>
           {/*Search Bar*/}
-          <div className="form-control relative flex flex-row py-2 items-center shadow-sm">
+          <div className="form-control relative flex flex-row py-2 items-center">
             <input
               onKeyDown={(e: any) => {
                 if (e.key === "Enter") search();
@@ -61,7 +66,7 @@ export default function NavBar() {
               onChange={onChange}
               type="text"
               placeholder="Search"
-              className="input flex-grow input-bordered pl-5 md:w-auto focus:outline-none rounded-full"
+              className="input input-bordered focus:outline-none focus:border-primary rounded-full w-full max-w-xs transition-all duration-300"
             />
             <button onClick={search}>
               <AiOutlineSearch
@@ -70,6 +75,7 @@ export default function NavBar() {
               />
             </button>
           </div>
+          {/*avatar*/}
           <div className="dropdown dropdown-left">
             <div
               tabIndex={0}

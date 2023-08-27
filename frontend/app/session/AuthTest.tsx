@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { UpdateAuctionTest } from "@/app/Actions/auctionActions";
+import { updateAuctionTest } from "@/app/Actions/auctionActions";
 
 export default function AuthTest() {
   const [loading, setLoading] = useState(false);
@@ -9,7 +9,7 @@ export default function AuthTest() {
   function doUpdate() {
     setResult(undefined);
     setLoading(true);
-    UpdateAuctionTest()
+    updateAuctionTest()
       .then((res) => setResult(res))
       .finally(() => setLoading(false));
   }
