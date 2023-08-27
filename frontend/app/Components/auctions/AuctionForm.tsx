@@ -38,13 +38,16 @@ export default function AuctionForm({ auction }: Props) {
     try {
       let id = "";
       let res;
+      let actionType;
       if (curPath === "/auctions/create") {
         res = await createAuction(data);
         id = res.id;
+        actionType = "Create";
       } else {
         if (auction) {
           res = await updateAuction(data, auction.id);
           id = auction.id;
+          actionType = "Update";
         }
       }
 
@@ -52,6 +55,7 @@ export default function AuctionForm({ auction }: Props) {
         throw res.error;
       }
       router.push(`/auctions/details/${id}`);
+      toast.success(`${actionType} auction success!`);
     } catch (error: any) {
       toast.error(`Something went wrong, ${error.message}`);
     }
