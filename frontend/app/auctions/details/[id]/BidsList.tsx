@@ -1,6 +1,5 @@
 "use client";
 import { getBidsForAuctionByAuctionId } from "@/app/Actions/auctionActions";
-import { User } from "next-auth";
 import { Auction, Bid } from "@/types";
 import { useEffect, useState } from "react";
 import { useBidStore } from "@/app/Components/hooks/useBidStore";
@@ -10,10 +9,10 @@ import BidItem from "@/app/auctions/details/[id]/BidItem";
 type Props = {
   user: any;
   auction: Auction;
+  bids: Bid[];
 };
-export default function BidsList({ user, auction }: Props) {
+export default function BidsList({ user, auction, bids }: Props) {
   const [loading, setLoading] = useState(true);
-  const bids = useBidStore((state) => state.bids);
   const setBids = useBidStore((state) => state.setBids);
 
   useEffect(() => {

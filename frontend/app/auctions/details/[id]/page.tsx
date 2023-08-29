@@ -11,6 +11,7 @@ import EditButton from "@/app/auctions/details/[id]/EditButton";
 import SellerBidItem from "@/app/auctions/details/[id]/SellerBidItem";
 import BidsList from "@/app/auctions/details/[id]/BidsList";
 import BidForm from "@/app/auctions/details/[id]/BidForm";
+import BidDisplay from "@/app/auctions/details/[id]/BidDisplay";
 
 export default async function Details({
   params,
@@ -23,16 +24,6 @@ export default async function Details({
   const data = await getDetailViewData(params.id);
   const bids = await getBidsForAuctionByAuctionId(params.id);
   const sellerIsCurrentUser = user?.username === data.seller;
-
-  const highBid = bids.reduce(
-    (prev, current) =>
-      prev > current.amount
-        ? prev
-        : current.bidStatus.includes("Accepted")
-        ? current.amount
-        : prev,
-    0,
-  );
 
   return (
     <div>
@@ -56,14 +47,7 @@ export default async function Details({
       ) : (
         <div className="my-4"></div>
       )}
-      <div className="rounded-lg p-4 bg-neutral-focus mb-4">
-        <Heading title={`Current high bid is $${highBid}`} />
-        <div className="max-h-[400px] overflow-auto ">
-          <BidsList user={user} auction={data} />
-          <SellerBidItem user={user} auction={data} />
-        </div>
-        <BidForm auction={data} highBid={highBid} user={user} />
-      </div>
+      <BidDisplay user={user} data={data} />
     </div>
   );
 }

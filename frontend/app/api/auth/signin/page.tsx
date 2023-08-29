@@ -1,6 +1,6 @@
 import EmptyFilter from "@/app/Components/auctions/EmptyFilter";
 
-export default function ({
+export default function SignIn({
   searchParams,
 }: {
   searchParams: { callbackUrl: string };
