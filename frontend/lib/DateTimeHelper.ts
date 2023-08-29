@@ -33,3 +33,14 @@ export function DateTimeHelper(timestamp: string): string {
     return `${yearsAgo} ${yearsAgo === 1 ? "year" : "years"} ago`;
   }
 }
+
+export function isLessThanOneDayOld(dateString: string): boolean {
+  const currentTimestamp = Date.now();
+  const targetTimestamp = Date.parse(dateString);
+  const timeDifference = currentTimestamp - targetTimestamp;
+
+  // Define time interval for one day in milliseconds
+  const oneDay = 24 * 60 * 60 * 1000;
+
+  return timeDifference < oneDay;
+}

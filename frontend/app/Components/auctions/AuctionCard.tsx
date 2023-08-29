@@ -3,6 +3,7 @@ import AuctionCardImage from "@/app/Components/auctions/AuctionCardImage";
 import { Auction } from "@/types";
 import Link from "next/link";
 import CurrentBidBadge from "@/app/Components/auctions/CurrentBidBadge";
+import { isLessThanOneDayOld } from "@/lib/DateTimeHelper";
 
 type Props = {
   auction: Auction;
@@ -29,10 +30,21 @@ export default function AuctionCard({ auction }: Props) {
           </div>
         </figure>
         <div className="card-body">
-          <h2 className="card-title">
+          <h3 className="card-title">
             {auction.make} {auction.model}
-          </h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          </h3>
+          <p>
+            Year: <div className="badge">{auction.year}</div>
+          </p>
+          <p>
+            Color: <div className="badge">{auction.color}</div>
+          </p>
+          <p>
+            Mileage: <div className="badge">{auction.mileage}</div>
+          </p>
+          {isLessThanOneDayOld(auction.createdAt) && (
+            <div className="badge badge-secondary">NEW</div>
+          )}
         </div>
       </div>
     </Link>
