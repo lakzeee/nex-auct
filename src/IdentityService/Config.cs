@@ -36,7 +36,7 @@ public static class Config
                 ClientSecrets = new[] { new Secret("secret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                 RequirePkce = false,
-                RedirectUris = { "http://localhos t:3000/api/auth/callback/id-server" },
+                RedirectUris = { "http://localhost:3000/api/auth/callback/id-server" },
                 AllowOfflineAccess = true,
                 AllowedScopes = { "openid", "profile", "auctionApp" },
                 AccessTokenLifetime = 3600 * 24 * 30,

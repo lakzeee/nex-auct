@@ -70,7 +70,7 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - ConnectionStrings__DefaultConnection=Server=postgres:5432;User Id=postgres;Password=postgrespw;Database=identity
     ports:
-      - 5001:80
+      - 80:80
     depends_on:
       - mongodb
       - rabbitmq
@@ -115,3 +115,21 @@ services:
     depends_on:
       - mongodb
       - rabbitmq
+  web-app:
+    image: lak919/nex-auct/web-app:latest
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    volumes:
+      - /var/lib/web/data
+    environment:
+      - NEXTAUTH_SECRET=secret
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_URL_INTERNAL=http://web-app:3000
+      - NEXT_PUBLIC_API_URL=http://gateway-svc/
+      - API_URL=http://gateway-svc/
+      - ID_URL=http://id.nexauct.com
+    ports:
+      - 3000:3000
+    extra_hosts: 
+      - id.nexauct.com:172.18.0.4
