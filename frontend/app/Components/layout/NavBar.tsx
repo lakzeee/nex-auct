@@ -48,7 +48,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="navbar bg-base-100 drop-shadow-md flex justify-between gap-2">
+      <div className="navbar bg-base-100 drop-shadow-md flex justify-between gap-2 fixed top-0 z-50">
         <div onClick={doRest}>
           <button className="btn btn-ghost normal-case text-lg sm:text-xl gap-2">
             <RiAuctionLine size={34} />

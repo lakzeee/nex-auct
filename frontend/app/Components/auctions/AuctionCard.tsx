@@ -14,7 +14,7 @@ export default function AuctionCard({ auction }: Props) {
       <div className="card card-compact md:card-normal h-full bg-base-100 hover:bg-neutral-focus shadow-xl duration-700 ease-in-out">
         <figure>
           <div className="relative w-full">
-            <div className="absolute top-2 right-2 z-50">
+            <div className="absolute top-2 right-2 z-40">
               <CurrentBidBadge
                 amount={auction.currentHighBid}
                 reservePrice={auction.reservePrice}

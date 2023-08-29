@@ -16,8 +16,8 @@ export default function CurrentBidBadge({ amount, reservePrice }: Props) {
       : "Lower than Reserved"
     : "Be the first to bid";
   return (
-    <div className="tooltip tooltip-left z-50" data-tip={tooltipText}>
-      <div className={`badge ${color}`}>{text}</div>
+    <div className="tooltip tooltip-left z-40" data-tip={tooltipText}>
+      <div className={`badge ${color} z-40`}>{text}</div>
     </div>
   );
 }
