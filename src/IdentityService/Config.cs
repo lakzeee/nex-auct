@@ -17,8 +17,9 @@ public static class Config
             new("auctionApp", "Auction App Full Access")
         };
 
-    public static IEnumerable<Client> Clients =>
-        new Client[]
+    public static IEnumerable<Client> Clients(IConfiguration config)
+    {
+        return new Client[]
         {
             new()
             {
@@ -36,11 +37,12 @@ public static class Config
                 ClientSecrets = new[] { new Secret("secret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                 RequirePkce = false,
-                RedirectUris = { "http://localhost:3000/api/auth/callback/id-server" },
+                RedirectUris = { config["ClientApp"] + "/api/auth/callback/id-server" },
                 AllowOfflineAccess = true,
                 AllowedScopes = { "openid", "profile", "auctionApp" },
                 AccessTokenLifetime = 3600 * 24 * 30,
                 AlwaysIncludeUserClaimsInIdToken = true
             }
         };
+    }
 }

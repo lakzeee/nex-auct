@@ -19,13 +19,18 @@ export default function SignalRProvider({ children, user }: Props) {
   const setCurrentPrice = useAuctionStore((state) => state.setCurrentPrice);
   const addBid = useBidStore((state) => state.addBid);
 
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://api.nexauct.com/"
+      : process.env.NEXT_PUBLIC_API_URL;
+
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-      .withUrl(process.env.NEXT_PUBLIC_API_URL + "notifications")
+      .withUrl(apiUrl + "notifications")
       .withAutomaticReconnect()
       .build();
     setConnection(newConnection);
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
     if (connection) {
