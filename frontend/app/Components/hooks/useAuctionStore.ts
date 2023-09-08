@@ -1,5 +1,4 @@
 import { Auction, PageResult } from "@/types";
-import { create } from "zustand";
 import { createWithEqualityFn } from "zustand/traditional";
 import { shallow } from "zustand/shallow";
 
