@@ -24,4 +24,4 @@ jobs:
           context: .
           file: src/IdentityService/Dockerfile
           push: true
-          tags: lak919/nex-auct/identity-svc:latest
+          tags: lak919/identity-svc:latest
