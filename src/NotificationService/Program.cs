@@ -10,6 +10,11 @@ builder.Services.AddMassTransit(x =>
     x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("nt", false));
     x.UsingRabbitMq((context, cfg) =>
     {
+        cfg.UseMessageRetry(r =>
+        {
+            r.Handle<RabbitMqConnectionException>();
+            r.Interval(5, TimeSpan.FromSeconds(10));
+        });
         cfg.Host(builder.Configuration["RabbitMq:host"], "/", host =>
         {
             host.Username(builder.Configuration.GetValue("RabbitMq:Username", "guest"));
