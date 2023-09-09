@@ -18,6 +18,8 @@ spec:
         env:
           - name: ClientApp
             value: https://app.nexauct.com
+          - name: IdentityServiceUrl
+            value: https://id.zehu.tech
             
 ---
 apiVersion: v1
