@@ -34,7 +34,7 @@ services:
     networks:
       custom:
   auction-svc:
-    image: lak919/nex-auct/auction-svc:latest
+    image: lak919/auction-svc:latest
     build:
       context: .
       dockerfile: src/AuctionService/Dockerfile
@@ -58,7 +58,7 @@ services:
     networks:
       custom:
   search-svc:
-    image: lak919/nex-auct/search-svc:latest
+    image: lak919/search-svc:latest
     build:
       context: .
       dockerfile: src/SearchService/Dockerfile
@@ -76,7 +76,7 @@ services:
     networks:
       custom:
   identity-svc:
-    image: lak919/nex-auct/identity-svc:latest
+    image: lak919/identity-svc:latest
     build:
       context: .
       dockerfile: src/IdentityService/Dockerfile
@@ -93,7 +93,7 @@ services:
       custom:
         ipv4_address: 10.5.0.200
   gateway-svc:
-    image: lak919/nex-auct/gateway-svc:latest
+    image: lak919/gateway-svc:latest
     build:
       context: .
       dockerfile: src/GatewayService/Dockerfile
@@ -105,7 +105,7 @@ services:
     networks:
       custom:
   bid-svc:
-    image: lak919/nex-auct/bid-svc:latest
+    image: lak919/bid-svc:latest
     build:
       context: .
       dockerfile: src/BiddingService/Dockerfile
@@ -124,7 +124,7 @@ services:
     networks:
       custom:
   notify-svc:
-    image: lak919/nex-auct/notify-svc:latest
+    image: lak919/notify-svc:latest
     build:
       context: .
       dockerfile: src/NotificationService/Dockerfile
@@ -140,7 +140,7 @@ services:
     networks:
       custom:
   web-app:
-    image: lak919/nex-auct/web-app:latest
+    image: lak919/web-app:latest
     build:
       context: .
       dockerfile: frontend/Dockerfile
