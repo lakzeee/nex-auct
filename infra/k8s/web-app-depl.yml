@@ -25,8 +25,13 @@ spec:
               secretKeyRef:
                 name: web-app-secret
                 key: authSecret
+          - name: CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: web-app-secret
+                key: clientSecret
           - name: NEXTAUTH_URL
-            value: https://app.nexauct.com
+            value: https://nexauct-app.zehu.tech
         ports:
         - containerPort: 3000
 ---

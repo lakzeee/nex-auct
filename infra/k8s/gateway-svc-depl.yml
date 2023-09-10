@@ -17,7 +17,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: ClientApp
-            value: https://app.nexauct.com
+            value: https://nexauct-app.zehu.tech
           - name: IdentityServiceUrl
             value: https://id.zehu.tech
             
