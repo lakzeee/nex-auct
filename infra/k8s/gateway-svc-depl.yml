@@ -14,7 +14,7 @@ spec:
       containers:
       - name: gateway-svc
         image: lak919/gateway-svc
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         env:
           - name: ClientApp
             value: https://app.nexauct.com

@@ -479,3 +479,4 @@ $RECYCLE.BIN/
 .idea
 *.idea
 devcerts
+infra/prod-k8s/prod-secrets.yml
