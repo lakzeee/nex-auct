@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY_IMAGE: lak919/auction-svc
-  DOCKERFILE: src/IdentityService/Dockerfile
+  DOCKERFILE: src/AuctionService/Dockerfile
   SVC_NAME: auction-svc
 
 
