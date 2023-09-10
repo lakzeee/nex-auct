@@ -6,13 +6,8 @@ metadata:
     name: ingress-svc
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-      - app.nexauct.com
-      - api.nexauct.com
-      secretName: nexauct-tls
   rules:
-  - host: app.nexauct.com
+  - host: nexauct-app.zehu.tech
     http:
       paths:
       - pathType: Prefix
@@ -22,7 +17,7 @@ spec:
             name: web-app-clusterip
             port: 
               number: 3000
-  - host: api.nexauct.com
+  - host: nexauct-api.zehu.tech
     http:
       paths:
       - pathType: Prefix
