@@ -57,7 +57,7 @@ export default function Listings() {
       ) : (
         <>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-            {data &&
+            {data.auctions.length > 0 &&
               data.auctions.map((auction) => (
                 <AuctionCard auction={auction} key={auction.id} />
               ))}
