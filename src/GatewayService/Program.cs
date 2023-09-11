@@ -26,15 +26,6 @@ builder.Services.AddCors(options =>
                 .AllowCredentials()
                 .WithOrigins(builder.Configuration["ClientApp"]);
         });
-    options.AddPolicy("customPolicy2",
-        b =>
-        {
-            b
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials()
-                .WithOrigins(builder.Configuration["ClientApp2"]);
-        });
 });
 
 var app = builder.Build();

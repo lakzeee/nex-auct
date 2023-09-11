@@ -30,11 +30,11 @@ jobs:
           file: ${{ env.DOCKERFILE }}
           push: true
           tags: ${{ env.REGISTRY_IMAGE }}:latest
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Save DigitalOcean kubeconfig
-        run: doctl kubernetes cluster kubeconfig save nex-auct
-      - name: Restart k8s deployment
-        run: kubectl rollout restart deployment ${{ env.SVC_NAME }}
+#      - name: Install doctl
+#        uses: digitalocean/action-doctl@v2
+#        with:
+#          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+#      - name: Save DigitalOcean kubeconfig
+#        run: doctl kubernetes cluster kubeconfig save nex-auct
+#      - name: Restart k8s deployment
+#        run: kubectl rollout restart deployment ${{ env.SVC_NAME }}
