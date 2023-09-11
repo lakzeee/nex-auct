@@ -17,7 +17,7 @@ export default async function RootLayout({
 }) {
   const user = await getCurrentUser();
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
       <body>
         <ToasterProvider />
         <NavBar />
