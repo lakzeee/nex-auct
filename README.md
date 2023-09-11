@@ -1,5 +1,7 @@
 # NexAuct - A distributed full-stack real-time auction application
 
+Check out live demo with this link: [app.zehu.tech](https://app.zehu.tech)
+
 This is is a full-stack auction application leveraged microservices architecture while utilizing .Net for backend services and Next.js for the client app.
 
 ## Features
