@@ -22,6 +22,7 @@ builder.Services.AddCors(options =>
         {
             b
                 .WithOrigins(builder.Configuration["ClientApp"])
+                .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowCredentials();
 
