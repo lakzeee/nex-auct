@@ -21,16 +21,16 @@ builder.Services.AddCors(options =>
         b =>
         {
             b
-                .AllowAnyHeader()
+                .WithOrigins(builder.Configuration["ClientApp"])
                 .AllowAnyMethod()
-                .AllowCredentials()
-                .WithOrigins(builder.Configuration["ClientApp"]);
+                .AllowCredentials();
+
         });
 });
 
 var app = builder.Build();
 
-app.UseCors();
+app.UseCors("customPolicy");
 app.MapReverseProxy();
 
 app.UseAuthentication();
