@@ -22,9 +22,9 @@ builder.Services.AddCors(options =>
         {
             b
                 .WithOrigins(builder.Configuration["ClientApp"])
+                .AllowAnyHeader()
                 .AllowCredentials()
-                .AllowAnyMethod()
-                .AllowCredentials();
+                .AllowAnyMethod();
 
         });
 });
