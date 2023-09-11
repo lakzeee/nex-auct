@@ -480,3 +480,4 @@ $RECYCLE.BIN/
 *.idea
 devcerts
 infra/prod-k8s/prod-secrets.yml
+docker-compose-prod.yml

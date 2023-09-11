@@ -21,7 +21,7 @@ export default function SignalRProvider({ children, user }: Props) {
 
   const apiUrl =
     process.env.NODE_ENV === "production"
-      ? "https://nexauct-api.zehu.tech/"
+      ? "https://api.zehu.tech/"
       : process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {

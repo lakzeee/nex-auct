@@ -7,7 +7,6 @@ import {
   BiSortAZ,
   BiSun,
 } from "react-icons/bi";
-import { state } from "sucrase/dist/types/parser/traverser/base";
 
 type Props = {
   pageSize: number;

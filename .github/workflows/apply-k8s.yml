@@ -1,21 +1,21 @@
-name: apply-k8s
+# name: apply-k8s
 
-on:
-  workflow_dispatch: 
-  push:
-    branches: [ "main" ]
-    paths:
-      - 'infra/**'
+# on:
+#   workflow_dispatch: 
+#   push:
+#     branches: [ "main" ]
+#     paths:
+#       - 'infra/**'
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Install doctl
-      uses: digitalocean/action-doctl@v2
-      with:
-        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-    - name: Save DigitalOcean kubeconfig
-      run: doctl kubernetes cluster kubeconfig save nex-auct
-    - run: kubectl apply -f infra/k8s && kubectl apply -f infra/prod-k8s
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Install doctl
+#       uses: digitalocean/action-doctl@v2
+#       with:
+#         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+#     - name: Save DigitalOcean kubeconfig
+#       run: doctl kubernetes cluster kubeconfig save nex-auct
+#     - run: kubectl apply -f infra/k8s && kubectl apply -f infra/prod-k8s
